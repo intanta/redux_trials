@@ -6,11 +6,16 @@ import * as Actions from '../actions'
 class App extends Component {
 
   render() {
-	const { data, actions } = this.props
+	const { data, actions } = this.props;
+	var handle = function ()
+	{
+		var intervalId = setInterval(actions.getJson,1000);
+		setTimeout(function(){clearInterval(intervalId)},10000);
+	};
     return (
 	<div>
 		<p>{data} </p>
-		<button onClick = {actions.getJson}> Request </button>
+		<button onClick = {handle}> Request </button>
 	</div>
     )
   }
